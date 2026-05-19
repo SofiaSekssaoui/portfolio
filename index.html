@@ -9,7 +9,6 @@
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f5f5f5; color: #111; margin: 0; padding: 0; overflow-x: hidden; scroll-behavior: smooth; }
         
-        /* --- Cacher la scrollbar de la nav mobile --- */
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
@@ -28,7 +27,7 @@
         .slide.exit { transform: translate(-50%, -50%) rotateX(90deg); opacity: 0; }
         .huge-text { font-size: clamp(3rem, 7.5vw, 110px); line-height: 0.85; font-weight: 800; letter-spacing: -0.04em; }
 
-        /* --- 2. SCROLL REVEAL (LE RETOUR) --- */
+        /* --- 2. SCROLL REVEAL --- */
         .reveal-wrapper { position: relative; height: 250vh; z-index: 30; background: transparent; }
         .sticky-container { position: sticky; top: 0; height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
         
@@ -39,16 +38,14 @@
             border-radius: 100px; 
             overflow: hidden; 
             will-change: width, height, border-radius; 
-            transform: translateZ(0); /* Accélération matérielle */
+            transform: translateZ(0); 
             background: #000; 
         }
         
-        /* LE CORRECTIF ULTIME POUR SAFARI : Position absolue parfaite */
         .inner-reveal-content { 
             position: absolute; 
             top: 50%;
             left: 50%;
-            /* La largeur est fixée à l'écran, pas à la pilule. Ainsi, le texte ne s'écrase jamais ! */
             width: 90vw; 
             max-width: 800px;
             color: white; 
@@ -122,7 +119,7 @@
                         <span class="text-[10px] font-bold uppercase tracking-[0.4em] text-gray-300 block mb-6 drop-shadow-md">// Mon Expertise</span>
                         <h2 class="text-4xl md:text-7xl font-extrabold tracking-tighter mb-6 text-white drop-shadow-xl">Hardware & Software.</h2>
                         <p class="text-lg md:text-xl font-medium text-gray-100 drop-shadow-lg leading-relaxed">
-                            Je conçois des architectures électroniques robustes .
+                            Maîtrise totale.
                         </p>
                     </div>
                 </div>
@@ -197,7 +194,7 @@
     </footer>
 
     <script>
-        // SLIDER TEXTE HERO
+        // TEXT REVEAL SLIDER
         const slides = document.querySelectorAll('.slide');
         let current = 0;
         setInterval(() => {
@@ -210,7 +207,7 @@
             setTimeout(() => { slides[prev].classList.remove('exit'); }, 1000); 
         }, 4000);
 
-        // LOGIQUE D'ANIMATION (Mise à jour pour s'assurer que Safari suit)
+        // LOGIQUE D'ANIMATION
         const pill = document.getElementById('pill');
         const txtL = document.getElementById('txt-left');
         const txtR = document.getElementById('txt-right');
@@ -240,7 +237,6 @@
 
             if (progress > 0.7) {
                 content.style.opacity = (progress - 0.7) * 3.3;
-                // On centre avec -50%, -50% puis on ajoute un petit glissement en Y
                 content.style.transform = `translate(-50%, calc(-50% + ${(1 - progress) * 40}px)) translateZ(0)`;
             } else {
                 content.style.opacity = 0;

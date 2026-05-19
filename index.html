@@ -27,7 +27,7 @@
         .slide.exit { transform: translate(-50%, -50%) rotateX(90deg); opacity: 0; }
         .huge-text { font-size: clamp(3rem, 7.5vw, 110px); line-height: 0.85; font-weight: 800; letter-spacing: -0.04em; }
 
-        /* --- 2. SCROLL REVEAL (CORRIGÉ POUR SAFARI) --- */
+        /* --- 2. SCROLL REVEAL --- */
         .reveal-wrapper { position: relative; height: 250vh; z-index: 30; background: transparent; }
         .sticky-container { position: sticky; top: 0; height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
         
@@ -36,27 +36,10 @@
             width: 140px; 
             height: 60px; 
             border-radius: 100px; 
-            overflow: hidden; 
+            overflow: hidden; /* COUPE TOUT CE QUI DÉPASSE */
             will-change: width, height, border-radius; 
             transform: translateZ(0); 
             background: #000; 
-        }
-        
-        /* TEXTE SORTI DE LA PILULE POUR NE PLUS SE FAIRE ÉCRASER */
-        .absolute-overlay-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 100%;
-            max-width: 900px;
-            padding: 0 20px;
-            text-align: center;
-            color: white;
-            z-index: 50;
-            opacity: 0; /* Caché au départ */
-            pointer-events: none; /* Laisse passer les clics */
-            will-change: transform, opacity;
-            -webkit-font-smoothing: antialiased;
         }
 
         /* --- 3. BOÎTE À OUTILS --- */
@@ -112,26 +95,26 @@
 
     <section id="reveal-trigger" class="reveal-wrapper">
         <div class="sticky-container">
-            
             <div class="flex items-center justify-center gap-6 text-5xl md:text-8xl font-extrabold tracking-tighter w-full relative z-10">
                 <span id="txt-left">De l'idée</span>
                 
                 <div id="pill" class="expand-pill">
-                    <img src="https://images.unsplash.com/photo-1518932945647-7a3c969015ce?w=1000" class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-luminosity">
-                    <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black/80"></div>
+                    <img src="https://images.unsplash.com/photo-1518932945647-7a3c969015ce?w=1000" class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-luminosity z-0">
+                    <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black/80 z-10"></div>
+                    
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100vw] flex justify-center z-20">
+                        <div id="reveal-content" class="text-center px-6 max-w-4xl text-white opacity-0" style="will-change: transform, opacity; -webkit-font-smoothing: antialiased;">
+                            <span class="text-[10px] font-bold uppercase tracking-[0.4em] text-gray-300 block mb-6 drop-shadow-md">// Mon Expertise</span>
+                            <h2 class="text-4xl md:text-7xl font-extrabold tracking-tighter mb-6 text-white drop-shadow-xl">Hardware & Software.</h2>
+                            <p class="text-lg md:text-xl font-medium text-gray-100 drop-shadow-lg leading-relaxed max-w-2xl mx-auto">
+                                Je conçois des architectures électroniques robustes et j'écris le code bas-niveau qui leur donne vie. La maîtrise totale de la chaîne d'acquisition.
+                            </p>
+                        </div>
+                    </div>
                 </div>
                 
                 <span id="txt-right">Au système</span>
             </div>
-
-            <div id="reveal-content" class="absolute-overlay-text">
-                <span class="text-[10px] font-bold uppercase tracking-[0.4em] text-gray-300 block mb-6 drop-shadow-md">// Mon Expertise</span>
-                <h2 class="text-4xl md:text-7xl font-extrabold tracking-tighter mb-6 text-white drop-shadow-xl">Hardware & Software.</h2>
-                <p class="text-lg md:text-xl font-medium text-gray-100 drop-shadow-lg leading-relaxed">
-                    Je conçois des architectures électroniques robustes et j'écris le code bas-niveau qui leur donne vie. La maîtrise totale de la chaîne d'acquisition.
-                </p>
-            </div>
-
         </div>
     </section>
 
@@ -234,19 +217,19 @@
             pill.style.height = `${h}px`;
             pill.style.borderRadius = `${br}px`;
             
-            // Écartement du texte
+            // Écartement des mots
             txtL.style.transform = `translateX(-${progress * 80}vw)`;
             txtL.style.opacity = 1 - progress * 2;
             txtR.style.transform = `translateX(${progress * 80}vw)`;
             txtR.style.opacity = 1 - progress * 2;
 
-            // Apparition du contenu (totalement indépendant de la pilule)
+            // Apparition du contenu avec effet de glissement
             if (progress > 0.7) {
                 content.style.opacity = (progress - 0.7) * 3.3;
-                content.style.transform = `translate(-50%, calc(-50% + ${(1 - progress) * 40}px)) translateZ(0)`;
+                content.style.transform = `translateY(${(1 - progress) * 40}px) translateZ(0)`;
             } else {
                 content.style.opacity = 0;
-                content.style.transform = `translate(-50%, calc(-50% + 20px)) translateZ(0)`;
+                content.style.transform = `translateY(20px) translateZ(0)`;
             }
         });
     </script>

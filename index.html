@@ -9,7 +9,6 @@
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f5f5f5; color: #111; margin: 0; padding: 0; overflow-x: hidden; scroll-behavior: smooth; }
         
-        /* --- Cacher la scrollbar de la nav mobile --- */
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
@@ -31,19 +30,33 @@
         /* --- 2. SCROLL REVEAL --- */
         .reveal-wrapper { position: relative; height: 250vh; z-index: 30; background: transparent; }
         .sticky-container { position: sticky; top: 0; height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        .expand-pill { position: relative; width: 140px; height: 60px; border-radius: 100px; overflow: hidden; will-change: width, height, border-radius; transform: translateZ(0); display: flex; align-items: center; justify-content: center; background: #000; }
         
-        /* LE CORRECTIF DU TEXTE EST ICI */
+        .expand-pill { 
+            position: relative; 
+            width: 140px; 
+            height: 60px; 
+            border-radius: 100px; 
+            overflow: hidden; 
+            will-change: width, height, border-radius; 
+            transform: translateZ(0); 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            background: #000; 
+        }
+        
+        /* LE CORRECTIF ANTI-SAFARI EST ICI */
         .inner-reveal-content { 
-            position: absolute; 
+            position: relative; /* N'est plus absolute pour éviter le bug de placement Safari */
             color: white; 
             text-align: center; 
             opacity: 0; 
             z-index: 20; 
-            width: 800px; /* Largeur fixe pour éviter le recalcul par Safari */
+            width: 800px; /* Taille fixe */
             max-width: 85vw; 
-            transform: translateZ(0); /* Force l'accélération matérielle */
-            -webkit-font-smoothing: antialiased; /* Lisse le texte sur Mac */
+            flex-shrink: 0; /* L'EMPÊCHE DE SE FAIRE ÉCRASER QUAND LA PILULE EST PETITE */
+            transform: translateZ(0); 
+            will-change: transform, opacity;
         }
 
         /* --- 3. BOÎTE À OUTILS --- */
@@ -56,19 +69,19 @@
 </head>
 <body>
 
-<nav class="fixed top-8 w-full z-[100] flex justify-center gap-4 px-4 pointer-events-none">
-    <div class="pointer-events-auto bg-white/70 backdrop-blur-xl border border-white/40 shadow-lg rounded-full px-8 py-3.5 flex items-center gap-8 text-[10px] md:text-[11px] font-bold uppercase tracking-[0.2em] text-gray-500 transition-all hover:bg-white/90">
-        <a href="https://file.garden/aeij_fhnrxe8Mmog/CV_ATS_SEKSSAOUI_Sofia.pdf" target="_blank" class="hover:text-black transition-colors">CV</a>
-        <a href="https://www.linkedin.com/in/sofia-sekssaoui" target="_blank" class="hover:text-black transition-colors">LinkedIn</a>
-    </div>
-    <div class="pointer-events-auto bg-white/70 backdrop-blur-xl border border-white/40 shadow-lg rounded-full px-8 py-3.5 flex items-center gap-6 md:gap-8 text-[10px] md:text-[11px] font-bold uppercase tracking-[0.2em] text-gray-500 overflow-x-auto whitespace-nowrap no-scrollbar transition-all hover:bg-white/90 max-w-[70vw] md:max-w-none">
-        <a href="index.html" class="text-black transition-colors pointer-events-none">Accueil</a>
-        <a href="projets.html" class="hover:text-black transition-colors">Projets</a>
-        <a href="experience.html" class="hover:text-black transition-colors">Expériences</a>
-        <a href="academique.html" class="hover:text-black transition-colors">Parcours</a>
-        <a href="competence.html" class="hover:text-black transition-colors">Compétences</a>
-    </div>
-</nav>
+    <nav class="fixed top-8 w-full z-[100] flex justify-center gap-4 px-4 pointer-events-none">
+        <div class="pointer-events-auto bg-white/70 backdrop-blur-xl border border-white/40 shadow-lg rounded-full px-8 py-3.5 flex items-center gap-8 text-[10px] md:text-[11px] font-bold uppercase tracking-[0.2em] text-gray-500 transition-all hover:bg-white/90">
+            <a href="https://file.garden/aeij_fhnrxe8Mmog/CV_ATS_SEKSSAOUI_Sofia.pdf" target="_blank" class="hover:text-black transition-colors">CV</a>
+            <a href="https://www.linkedin.com/in/sofia-sekssaoui" target="_blank" class="hover:text-black transition-colors">LinkedIn</a>
+        </div>
+        <div class="pointer-events-auto bg-white/70 backdrop-blur-xl border border-white/40 shadow-lg rounded-full px-8 py-3.5 flex items-center gap-6 md:gap-8 text-[10px] md:text-[11px] font-bold uppercase tracking-[0.2em] text-gray-500 overflow-x-auto whitespace-nowrap no-scrollbar transition-all hover:bg-white/90 max-w-[70vw] md:max-w-none">
+            <a href="index.html" class="text-black transition-colors pointer-events-none">Accueil</a>
+            <a href="projets.html" class="hover:text-black transition-colors">Projets</a>
+            <a href="experience.html" class="hover:text-black transition-colors">Expériences</a>
+            <a href="academique.html" class="hover:text-black transition-colors">Parcours</a>
+            <a href="competence.html" class="hover:text-black transition-colors">Compétences</a>
+        </div>
+    </nav>
 
     <header class="hero-section">
         <div class="orbit-container">
@@ -103,9 +116,8 @@
                 <span id="txt-left">De l'idée</span>
                 
                 <div id="pill" class="expand-pill">
-                    <img src="https://images.unsplash.com/photo-1518932945647-7a3c969015ce?w=1000" class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-luminosity">
-                    
-                    <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black/80 z-0"></div>
+                    <img src="https://images.unsplash.com/photo-1518932945647-7a3c969015ce?w=1000" class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-luminosity z-0">
+                    <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black/80 z-10"></div>
                     
                     <div id="reveal-content" class="inner-reveal-content">
                         <span class="text-[10px] font-bold uppercase tracking-[0.4em] text-gray-300 block mb-6 drop-shadow-md">// Mon Expertise</span>
@@ -229,7 +241,6 @@
 
             if (progress > 0.7) {
                 content.style.opacity = (progress - 0.7) * 3.3;
-                /* AJOUT DU TRANSLATE-Z DANS LE JAVASCRIPT AUSSI */
                 content.style.transform = `translateY(${(1 - progress) * 40}px) translateZ(0)`;
             } else {
                 content.style.opacity = 0;

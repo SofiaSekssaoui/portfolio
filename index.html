@@ -9,12 +9,9 @@
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f5f5f5; color: #111; margin: 0; padding: 0; overflow-x: hidden; scroll-behavior: smooth; }
         
+        /* --- Cacher la scrollbar de la nav mobile --- */
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-
-        /* Animation d'apparition au scroll unifiée pour tout le site */
-        .reveal-up { opacity: 0; transform: translateY(50px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
-        .reveal-up.visible { opacity: 1; transform: translateY(0); }
 
         /* --- 1. HERO ORBITAL --- */
         .hero-section { position: relative; height: 100vh; width: 100vw; overflow: hidden; z-index: 10; }
@@ -30,6 +27,36 @@
         .slide.active { transform: translate(-50%, -50%) rotateX(0deg); opacity: 1; }
         .slide.exit { transform: translate(-50%, -50%) rotateX(90deg); opacity: 0; }
         .huge-text { font-size: clamp(3rem, 7.5vw, 110px); line-height: 0.85; font-weight: 800; letter-spacing: -0.04em; }
+
+        /* --- 2. SCROLL REVEAL (LE RETOUR) --- */
+        .reveal-wrapper { position: relative; height: 250vh; z-index: 30; background: transparent; }
+        .sticky-container { position: sticky; top: 0; height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        
+        .expand-pill { 
+            position: relative; 
+            width: 140px; 
+            height: 60px; 
+            border-radius: 100px; 
+            overflow: hidden; 
+            will-change: width, height, border-radius; 
+            transform: translateZ(0); /* Accélération matérielle */
+            background: #000; 
+        }
+        
+        /* LE CORRECTIF ULTIME POUR SAFARI : Position absolue parfaite */
+        .inner-reveal-content { 
+            position: absolute; 
+            top: 50%;
+            left: 50%;
+            /* La largeur est fixée à l'écran, pas à la pilule. Ainsi, le texte ne s'écrase jamais ! */
+            width: 90vw; 
+            max-width: 800px;
+            color: white; 
+            text-align: center; 
+            opacity: 0; 
+            z-index: 20; 
+            -webkit-font-smoothing: antialiased;
+        }
 
         /* --- 3. BOÎTE À OUTILS --- */
         .tools-section { background-color: #111; color: white; padding: 120px 5% 40px; position: relative; z-index: 40; border-radius: 48px 48px 0 0; }
@@ -82,18 +109,30 @@
         <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-[10px] font-bold uppercase tracking-[0.4em] text-gray-400 animate-bounce">Scroll ↓</div>
     </header>
 
-    <section class="py-40 px-6 text-center max-w-5xl mx-auto flex flex-col items-center justify-center min-h-[60vh] reveal-up">
-        <span class="text-[10px] font-bold uppercase tracking-[0.4em] text-gray-400 mb-8 block">// Hardware & Software</span>
-        <h2 class="text-5xl md:text-8xl lg:text-9xl font-extrabold tracking-tighter leading-[0.9] mb-8">
-            De l'idée <br>
-            <span class="text-gray-400 italic font-light">au système.</span>
-        </h2>
-        <p class="text-lg md:text-xl text-gray-500 font-light max-w-2xl mx-auto">
-            Je conçois des architectures électroniques robustes et j'écris le code bas-niveau qui leur donne vie. La maîtrise totale de la chaîne d'acquisition.
-        </p>
+    <section id="reveal-trigger" class="reveal-wrapper">
+        <div class="sticky-container">
+            <div class="flex items-center justify-center gap-6 text-5xl md:text-8xl font-extrabold tracking-tighter w-full">
+                <span id="txt-left">De l'idée</span>
+                
+                <div id="pill" class="expand-pill">
+                    <img src="https://images.unsplash.com/photo-1518932945647-7a3c969015ce?w=1000" class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-luminosity z-0">
+                    <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black/80 z-10"></div>
+                    
+                    <div id="reveal-content" class="inner-reveal-content">
+                        <span class="text-[10px] font-bold uppercase tracking-[0.4em] text-gray-300 block mb-6 drop-shadow-md">// Mon Expertise</span>
+                        <h2 class="text-4xl md:text-7xl font-extrabold tracking-tighter mb-6 text-white drop-shadow-xl">Hardware & Software.</h2>
+                        <p class="text-lg md:text-xl font-medium text-gray-100 drop-shadow-lg leading-relaxed">
+                            Je conçois des architectures électroniques robustes et j'écris le code bas-niveau qui leur donne vie. La maîtrise totale de la chaîne d'acquisition.
+                        </p>
+                    </div>
+                </div>
+                
+                <span id="txt-right">Au système</span>
+            </div>
+        </div>
     </section>
 
-    <section class="tools-section reveal-up">
+    <section class="tools-section">
         <div class="max-w-7xl mx-auto">
             <div class="mb-20">
                 <h2 class="text-5xl md:text-8xl font-extrabold tracking-tighter mb-4">La Boîte <br><span class="text-gray-600 font-light italic">à outils.</span></h2>
@@ -141,7 +180,7 @@
     </section>
 
     <footer class="bg-black text-white pb-20 px-5">
-        <div class="bg-[#f5f5f5] text-black rounded-[48px] p-12 md:p-32 text-center max-w-7xl mx-auto relative overflow-hidden reveal-up">
+        <div class="bg-[#f5f5f5] text-black rounded-[48px] p-12 md:p-32 text-center max-w-7xl mx-auto relative overflow-hidden">
             <h2 class="text-5xl md:text-8xl font-extrabold tracking-tighter mb-8 leading-[0.9]">Prête pour <br> l'alternance.</h2>
             <p class="text-gray-500 text-lg md:text-xl font-light mb-12 max-w-xl mx-auto italic">
                 Je recherche une alternance pour septembre 2026 afin de valider mon diplôme d'ingénieure à l'INSA Rennes.
@@ -171,20 +210,42 @@
             setTimeout(() => { slides[prev].classList.remove('exit'); }, 1000); 
         }, 4000);
 
-        // ANIMATION APPARITION AU SCROLL UNIFIÉE
-        document.addEventListener("DOMContentLoaded", () => {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.15 });
+        // LOGIQUE D'ANIMATION (Mise à jour pour s'assurer que Safari suit)
+        const pill = document.getElementById('pill');
+        const txtL = document.getElementById('txt-left');
+        const txtR = document.getElementById('txt-right');
+        const content = document.getElementById('reveal-content');
+        const trigger = document.getElementById('reveal-trigger');
 
-            document.querySelectorAll('.reveal-up').forEach((el) => {
-                observer.observe(el);
-            });
+        window.addEventListener('scroll', () => {
+            const rect = trigger.getBoundingClientRect();
+            let progress = 0;
+            if (rect.top <= 0) {
+                progress = Math.min(1, Math.max(0, Math.abs(rect.top) / (rect.height - window.innerHeight)));
+            }
+
+            // Calculer la taille de la pilule
+            const w = 140 + (window.innerWidth * 0.9 - 140) * progress;
+            const h = 60 + (window.innerHeight * 0.8 - 60) * progress;
+            const br = 100 - 68 * progress;
+
+            pill.style.width = `${w}px`;
+            pill.style.height = `${h}px`;
+            pill.style.borderRadius = `${br}px`;
+            
+            txtL.style.transform = `translateX(-${progress * 80}vw)`;
+            txtL.style.opacity = 1 - progress * 2;
+            txtR.style.transform = `translateX(${progress * 80}vw)`;
+            txtR.style.opacity = 1 - progress * 2;
+
+            if (progress > 0.7) {
+                content.style.opacity = (progress - 0.7) * 3.3;
+                // On centre avec -50%, -50% puis on ajoute un petit glissement en Y
+                content.style.transform = `translate(-50%, calc(-50% + ${(1 - progress) * 40}px)) translateZ(0)`;
+            } else {
+                content.style.opacity = 0;
+                content.style.transform = `translate(-50%, calc(-50% + 20px)) translateZ(0)`;
+            }
         });
     </script>
 </body>

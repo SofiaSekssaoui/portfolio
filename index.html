@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f5f5f5; color: #111; margin: 0; padding: 0; overflow-x: hidden; scroll-behavior: smooth; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f5f5f5; color: #111; margin: 0; padding: 0; overflow-x: hidden; scroll-behavior: smooth; transition: background-color 0.6s ease, color 0.6s ease; }
         
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
@@ -32,11 +32,22 @@
         .huge-text { font-size: clamp(3rem, 7.5vw, 110px); line-height: 0.85; font-weight: 800; letter-spacing: -0.04em; }
 
         /* --- 3. BOÎTE À OUTILS --- */
-        .tools-section { background-color: #111; color: white; padding: 120px 5% 40px; position: relative; z-index: 40; border-radius: 48px 48px 0 0; }
+        .tools-section { background-color: #111; color: white; padding: 120px 5% 40px; position: relative; z-index: 40; border-radius: 48px 48px 0 0; transition: background-color 0.6s ease; }
         .tool-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 40px; border-radius: 32px; transition: all 0.4s ease; }
         .tool-card:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.2); transform: translateY(-10px); }
         .tag-geii { font-[800] uppercase text-[10px] tracking-[0.2em] border border-white/20 px-3 py-1 rounded-full text-white/40 mb-6 inline-block; }
-        .pill-skill { background: white; color: black; padding: 6px 16px; border-radius: 99px; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; }
+        .pill-skill { background: white; color: black; padding: 6px 16px; border-radius: 99px; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; transition: all 0.6s ease; }
+
+        /* --- 4. CONFIGURATION DE L'EASTER EGG ROSE PASTEL --- */
+        body.pink-mode { background-color: #fff0f3 !important; color: #5c3d46 !important; }
+        body.pink-mode .text-black, body.pink-mode h2, body.pink-mode h1 { color: #8a4f60 !important; }
+        body.pink-mode .text-gray-500 { color: #a67c88 !important; }
+        body.pink-mode .bg-\[\#f5f5f5\] { background-color: #ffe5ec !important; transition: background-color 0.6s ease; }
+        body.pink-mode .tools-section { background-color: #4a2831 !important; }
+        body.pink-mode .tool-card { background: rgba(255, 255, 255, 0.04) !important; border-color: rgba(255, 255, 255, 0.1) !important; }
+        body.pink-mode .pill-skill { background: #ffe5ec !important; color: #4a2831 !important; }
+        body.pink-mode .bg-black { background-color: #63333e !important; }
+        body.pink-mode border-gray-200 { border-color: #f0c2cd !important; }
     </style>
 </head>
 <body>
@@ -58,7 +69,6 @@
     <header class="hero-section">
         <div class="orbit-container">
             <div class="orbit-wrapper pos-1"><div class="orbit-img" style="width: 220px; height: 180px;"><img src="https://images.unsplash.com/photo-1555664424-778a1e5e1b48?w=500" class="w-full h-full object-cover"></div></div>
-            
             <div class="orbit-wrapper pos-2"><div class="orbit-img" style="width: 180px; height: 260px;"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=500" class="w-full h-full object-cover"></div></div>
             <div class="orbit-wrapper pos-3"><div class="orbit-img" style="width: 160px; height: 200px;"><img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=500" class="w-full h-full object-cover"></div></div>
             <div class="orbit-wrapper pos-4"><div class="orbit-img" style="width: 240px; height: 240px;"><img src="https://images.unsplash.com/photo-1555680202-c86f0e12f086?w=500" class="w-full h-full object-cover"></div></div>
@@ -147,16 +157,16 @@
 
     <footer class="bg-black text-white pb-20 px-5">
         <div class="bg-[#f5f5f5] text-black rounded-[48px] p-12 md:p-32 text-center max-w-7xl mx-auto relative overflow-hidden reveal-up">
-            <h2 class="text-5xl md:text-8xl font-extrabold tracking-tighter mb-8 leading-[0.9]">Prête pour <br> l'alternance.</h2>
+            <h2 class="text-5xl md:text-8xl font-extrabold tracking-tighter mb-8 leading-[0.9]">Un projet <br> à me proposer ?</h2>
             <p class="text-gray-500 text-lg md:text-xl font-light mb-12 max-w-xl mx-auto italic">
-                Je recherche une alternance pour septembre 2026 afin de valider mon diplôme d'ingénieure à l'INSA Rennes.
+                Je suis ouverte aux opportunités de collaboration et prête à relever de nouveaux défis techniques en ingénierie électronique.
             </p>
             <a href="mailto:sofiasekssaoui@gmail.com" class="bg-black text-white px-12 py-6 rounded-full text-xs font-bold uppercase tracking-widest inline-block hover:scale-105 transition-transform">
                 M'envoyer un mail
             </a>
             
             <div class="mt-20 pt-10 border-t border-black/10 flex flex-col md:flex-row justify-between items-center text-[10px] font-bold uppercase tracking-widest text-gray-500">
-                <span>© 2026 Sofia Sekssaoui</span>
+                <span>© 2026 Sofia Sekssaoui<span id="easter-egg-trigger" class="cursor-pointer text-gray-500 hover:text-pink-500 transition-colors ml-0.5">.</span></span>
                 <span class="mt-4 md:mt-0">IUT Montpellier Sète — Spécialité GEII</span>
             </div>
         </div>
@@ -190,6 +200,12 @@
             document.querySelectorAll('.reveal-up').forEach((el) => {
                 observer.observe(el);
             });
+        });
+
+        // LOGIQUE DE L'EASTER EGG (INTERRUPTEUR CACHÉ)
+        const trigger = document.getElementById('easter-egg-trigger');
+        trigger.addEventListener('click', () => {
+            document.body.classList.toggle('pink-mode');
         });
     </script>
 </body>

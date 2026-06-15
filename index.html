@@ -17,7 +17,13 @@
         .orbit-container { position: absolute; top: 50%; left: 50%; width: 0; height: 0; animation: spin 45s linear infinite; }
         .pos-1 { top: 0px; left: 380px; } .pos-2 { top: 361px; left: 117px; } .pos-3 { top: 223px; left: -307px; } .pos-4 { top: -223px; left: -307px; } .pos-5 { top: -361px; left: 117px; }
         .orbit-wrapper { position: absolute; transform: translate(-50%, -50%); }
-        .orbit-img { border-radius: 32px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.08); animation: anti-spin 45s linear infinite; }
+        .orbit-img { 
+            border-radius: 32px; 
+            overflow: hidden; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08); 
+            animation: anti-spin 45s linear infinite; 
+            will-change: transform; /* AJOUT D'UN HACK ANTI-BUG DE RENDU SAFARI */
+        }
         @keyframes spin { 100% { transform: rotate(360deg); } }
         @keyframes anti-spin { 100% { transform: rotate(-360deg); } }
 
@@ -43,7 +49,6 @@
             z-index: 10;
         }
 
-        /* Le conteneur du texte est libéré de toutes contraintes pour ne jamais être coupé */
         .absolute-overlay-text-safe {
             position: absolute;
             top: 50%;
@@ -56,7 +61,7 @@
             pointer-events: none; 
             will-change: transform, opacity;
             -webkit-font-smoothing: antialiased;
-            white-space: nowrap; /* Empêche les retours à la ligne forcés par Safari */
+            white-space: nowrap; 
         }
 
         /* --- 3. BOÎTE À OUTILS --- */
@@ -85,8 +90,8 @@
 
     <header class="hero-section">
         <div class="orbit-container">
-            <div class="orbit-wrapper pos-1"><div class="orbit-img" style="width: 220px; height: 180px;"><img src="https://images.unsplash.com/photo-1504610926078-a1611febcad3?w=500" class="w-full h-full object-cover"></div></div>
-            <div class="orbit-wrapper pos-2"><div class="orbit-img" style="width: 180px; height: 260px;"><img src="https://images.unsplash.com/photo-1580894742597-87bc8789db3d?w=500" class="w-full h-full object-cover"></div></div>
+            <div class="orbit-wrapper pos-1"><div class="orbit-img" style="width: 220px; height: 180px;"><img src="https://images.unsplash.com/photo-1547082299-de196ea013d6?w=500" class="w-full h-full object-cover"></div></div>
+            <div class="orbit-wrapper pos-2"><div class="orbit-img" style="width: 180px; height: 260px;"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=500" class="w-full h-full object-cover"></div></div>
             <div class="orbit-wrapper pos-3"><div class="orbit-img" style="width: 160px; height: 200px;"><img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=500" class="w-full h-full object-cover"></div></div>
             <div class="orbit-wrapper pos-4"><div class="orbit-img" style="width: 240px; height: 240px;"><img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=500" class="w-full h-full object-cover"></div></div>
             <div class="orbit-wrapper pos-5"><div class="orbit-img" style="width: 150px; height: 200px;"><img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=500" class="w-full h-full object-cover"></div></div>

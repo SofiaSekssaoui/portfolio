@@ -39,25 +39,25 @@
 </head>
 <body>
 
-<nav class="fixed top-8 w-full z-[100] flex justify-center gap-4 px-4 pointer-events-none">
-    <div class="pointer-events-auto bg-white/70 backdrop-blur-xl border border-white/40 shadow-lg rounded-full px-8 py-3.5 flex items-center gap-8 text-[10px] md:text-[11px] font-bold uppercase tracking-[0.2em] text-gray-500 transition-all hover:bg-white/90">
-        <a href="https://file.garden/aeij_fhnrxe8Mmog/CV_ATS_SEKSSAOUI_Sofia.pdf" target="_blank" class="hover:text-black transition-colors">CV</a>
-        <a href="https://www.linkedin.com/in/sofia-sekssaoui" target="_blank" class="hover:text-black transition-colors">LinkedIn</a>
-    </div>
-    <div class="pointer-events-auto bg-white/70 backdrop-blur-xl border border-white/40 shadow-lg rounded-full px-8 py-3.5 flex items-center gap-6 md:gap-8 text-[10px] md:text-[11px] font-bold uppercase tracking-[0.2em] text-gray-500 overflow-x-auto whitespace-nowrap no-scrollbar transition-all hover:bg-white/90 max-w-[70vw] md:max-w-none">
-        <a href="index.html" class="hover:text-black transition-colors">Accueil</a>
-        <a href="projets.html" class="hover:text-black transition-colors">Projets</a>
-        <a href="experience.html" class="hover:text-black transition-colors">Expériences</a>
-        <a href="academique.html" class="hover:text-black transition-colors">Parcours</a>
-        <a href="competence.html" class="hover:text-black transition-colors">Compétences</a>
-    </div>
-</nav>
+    <nav class="fixed top-8 w-full z-[100] flex justify-center gap-4 px-4 pointer-events-none">
+        <div class="pointer-events-auto bg-white/70 backdrop-blur-xl border border-white/40 shadow-lg rounded-full px-8 py-3.5 flex items-center gap-8 text-[10px] md:text-[11px] font-bold uppercase tracking-[0.2em] text-gray-500 transition-all hover:bg-white/90">
+            <a href="https://file.garden/aeij_fhnrxe8Mmog/CV_ATS_SEKSSAOUI_Sofia.pdf" target="_blank" class="hover:text-black transition-colors">CV</a>
+            <a href="https://www.linkedin.com/in/sofia-sekssaoui" target="_blank" class="hover:text-black transition-colors">LinkedIn</a>
+        </div>
+        <div class="pointer-events-auto bg-white/70 backdrop-blur-xl border border-white/40 shadow-lg rounded-full px-8 py-3.5 flex items-center gap-6 md:gap-8 text-[10px] md:text-[11px] font-bold uppercase tracking-[0.2em] text-gray-500 overflow-x-auto whitespace-nowrap no-scrollbar transition-all hover:bg-white/90 max-w-[70vw] md:max-w-none">
+            <a href="index.html" class="hover:text-black transition-colors">Accueil</a>
+            <a href="projets.html" class="text-black transition-colors pointer-events-none">Projets</a>
+            <a href="experience.html" class="hover:text-black transition-colors">Expériences</a>
+            <a href="academique.html" class="hover:text-black transition-colors">Parcours</a>
+            <a href="competence.html" class="hover:text-black transition-colors">Compétences</a>
+        </div>
+    </nav>
 
     <header class="pt-48 pb-20 px-6 text-center max-w-5xl mx-auto reveal-up">
         <span class="text-[10px] font-bold text-gray-400 uppercase tracking-[0.4em] block mb-6">Archive Technique</span>
         <h1 class="text-6xl md:text-8xl lg:text-9xl font-extrabold tracking-tighter mb-8 leading-[0.9] whitespace-nowrap">Mes Projets.</h1>
         <p class="text-lg md:text-xl text-gray-500 font-light max-w-2xl mx-auto">
-            Cliquez sur un projet pour explorer les détails techniques. Du hardware industriel aux applications mobiles de performance.
+            Cliquez sur un projet pour explorer les détails techniques et les <strong>Apprentissages Critiques (AC)</strong> validés dans le cadre du B.U.T. GEII.
         </p>
     </header>
 
@@ -70,7 +70,8 @@
             data-context="Projet de Stage // Primal-Solem"
             data-tech="Langage C, STM32CubeIDE, KiCad, RS485, SDI-12"
             data-desc="Ce projet a été réalisé lors de mon stage chez Primal-Solem. L'objectif était de développer un outil capable de simuler fidèlement des signaux de capteurs industriels pour valider les cartes d'acquisition en interne."
-            data-details="La conception a impliqué la création d'un PCB complet sous KiCad. Côté firmware, j'ai programmé en C bas-niveau sur un microcontrôleur STM32. Le défi principal résidait dans le respect strict des timings des protocoles de communication série industriels (RS485 et SDI-12) et dans la précision de la génération des signaux analogiques.">
+            data-details="La conception a impliqué la création d'un PCB complet sous KiCad. Côté firmware, j'ai programmé en C bas-niveau sur un microcontrôleur STM32. Le défi principal résidait dans le respect strict des timings des protocoles de communication série industriels (RS485 et SDI-12) et dans la précision de la génération des signaux analogiques."
+            data-acs="<strong>AC31.03All</strong> | Proposer des solutions innovantes techniquement et économiquement||<strong>AC32.01All</strong> | Valider la conformité d’un système de GEII par rapport au besoin du client||<strong>AC34.03All</strong> | Produire le dossier de conformité du système en gérant le versionnage">
             
             <div class="w-full md:w-[55%] relative">
                 <div class="img-wrapper aspect-[4/3]">
@@ -82,13 +83,12 @@
             <div class="w-full md:w-[45%]">
                 <h2 class="text-4xl md:text-6xl font-extrabold tracking-tighter mb-6">Simulateur de <br>Capteurs.</h2>
                 <div class="flex flex-wrap gap-2 mb-8 pointer-events-none">
-                    <span class="tag-comp">Concevoir</span>
-                    <span class="tag-comp">Vérifier</span>
-                    <span class="tag-comp">Implanter</span>
-                    <span class="tag-comp">Maintenir</span>
+                    <span class="tag-comp">Concevoir (AC31)</span>
+                    <span class="tag-comp">Vérifier (AC32)</span>
+                    <span class="tag-comp">Intégrer (AC34)</span>
                 </div>
                 <div class="flex gap-2 border-t border-gray-200 pt-6 text-[10px] font-bold uppercase tracking-widest text-gray-400">
-                    Cliquez pour voir les détails →
+                    Cliquez pour voir les AC validés →
                 </div>
             </div>
         </article>
@@ -100,7 +100,8 @@
             data-context="Projet de Stage"
             data-tech="Routage PCB, KiCad, Électronique Analogique et Numérique"
             data-desc="Projet axé sur la conception matérielle (Hardware). Le but était de concevoir et router une carte électronique complexe."
-            data-details="Le projet a nécessité une analyse approfondie des contraintes de routage haute densité. J'ai dû prendre en compte l'intégrité du signal, l'adaptation d'impédance et le placement stratégique des plans de masse et d'alimentation pour minimiser le bruit électromagnétique (CEM).">
+            data-details="Le projet a nécessité une analyse approfondie des contraintes de routage haute densité. J'ai dû prendre en compte l'intégrité du signal, l'adaptation d'impédance et le placement stratégique des plans de masse et d'alimentation pour minimiser le bruit électromagnétique (CEM)."
+            data-acs="<strong>AC31.01All</strong> | Contribuer à la définition du besoin du client||<strong>AC32.03All</strong> | Proposer et tester des évolutions par rapport aux solutions initiales">
             
             <div class="w-full md:w-[55%] relative">
                 <div class="img-wrapper aspect-[4/3]">
@@ -112,11 +113,11 @@
             <div class="w-full md:w-[45%] md:text-right">
                 <h2 class="text-4xl md:text-6xl font-extrabold tracking-tighter mb-6">Fish'n'<br>Chip.</h2>
                 <div class="flex flex-wrap md:justify-end gap-2 mb-8 pointer-events-none">
-                    <span class="tag-comp">Concevoir</span>
-                    <span class="tag-comp">Vérifier</span>
+                    <span class="tag-comp">Concevoir (AC31)</span>
+                    <span class="tag-comp">Vérifier (AC32)</span>
                 </div>
                 <div class="flex md:justify-end gap-2 border-t border-gray-200 pt-6 text-[10px] font-bold uppercase tracking-widest text-gray-400">
-                    Cliquez pour voir les détails →
+                    Cliquez pour voir les AC validés →
                 </div>
             </div>
         </article>
@@ -128,7 +129,8 @@
             data-context="Projet Universitaire // Robotique"
             data-tech="C++, Microcontrôleurs, Capteurs ultrasoniques, Actionneurs"
             data-desc="Participation à un tournoi de robotique où l'objectif était de concevoir un robot autonome capable de détecter et pousser un adversaire hors d'un dojo."
-            data-details="La partie logicielle était au cœur du projet. J'ai programmé en C++ les machines d'états (State Machines) gérant les différentes phases de combat (Recherche, Alignement, Attaque). La difficulté majeure a été la gestion temps réel des interruptions liées aux capteurs de proximité et d'infrarouge pour éviter que le robot ne sorte lui-même de l'arène.">
+            data-details="La partie logicielle était au cœur du projet. J'ai programmé en C++ les machines d'états (State Machines) gérant les différentes phases de combat (Recherche, Alignement, Attaque). La difficulté majeure a été la gestion temps réel des interruptions liées aux capteurs de proximité et d'infrarouge pour éviter que le robot ne sorte lui-même de l'arène."
+            data-acs="<strong>AC31.03All</strong> | Proposer des solutions innovantes techniquement et économiquement||<strong>AC32.01All</strong> | Valider la conformité d’un système de GEII par rapport au besoin du client">
             
             <div class="w-full md:w-[55%] relative">
                 <div class="img-wrapper aspect-[4/3]">
@@ -140,13 +142,11 @@
             <div class="w-full md:w-[45%]">
                 <h2 class="text-4xl md:text-6xl font-extrabold tracking-tighter mb-6">Robot <br>Sumo.</h2>
                 <div class="flex flex-wrap gap-2 mb-8 pointer-events-none">
-                    <span class="tag-comp">Concevoir</span>
-                    <span class="tag-comp">Vérifier</span>
-                    <span class="tag-comp">Implanter</span>
-                    <span class="tag-comp">Maintenir</span>
+                    <span class="tag-comp">Concevoir (AC31)</span>
+                    <span class="tag-comp">Vérifier (AC32)</span>
                 </div>
                 <div class="flex gap-2 border-t border-gray-200 pt-6 text-[10px] font-bold uppercase tracking-widest text-gray-400">
-                    Cliquez pour voir les détails →
+                    Cliquez pour voir les AC validés →
                 </div>
             </div>
         </article>
@@ -158,7 +158,8 @@
             data-context="Projet Personnel // Application Mobile"
             data-tech="Développement Mobile, API Géolocalisation, Base de données, UI/UX"
             data-desc="Une application mobile pensée et développée sur mon temps libre pour suivre et analyser mes performances de course à pied en temps réel."
-            data-details="Le projet mêle Frontend et Backend. L'application récupère en temps réel les données de géolocalisation du smartphone, calcule l'allure moyenne, la distance et le dénivelé grâce au traitement des trames GPS. J'ai également conçu une architecture base de données légère pour sauvegarder l'historique des sessions et tracer les parcours sur une interface cartographique.">
+            data-details="Le projet mêle Frontend et Backend. L'application récupère en temps réel les données de géolocalisation du smartphone, calcule l'allure moyenne, la distance et le dénivelé grâce au traitement des trames GPS. J'ai également conçu une architecture base de données légère pour sauvegarder l'historique des sessions et tracer les parcours sur une interface cartographique."
+            data-acs="<strong>AC31.04All</strong> | Participer à la veille technologique au service de l'innovation||<strong>AC32.03All</strong> | Proposer et tester des évolutions par rapport aux solutions initiales">
             
             <div class="w-full md:w-[55%] relative">
                 <div class="img-wrapper aspect-[4/3]">
@@ -170,13 +171,11 @@
             <div class="w-full md:w-[45%] md:text-right">
                 <h2 class="text-4xl md:text-6xl font-extrabold tracking-tighter mb-6">Run <br>Tracker.</h2>
                 <div class="flex flex-wrap md:justify-end gap-2 mb-8 pointer-events-none">
-                    <span class="tag-comp">Concevoir</span>
-                    <span class="tag-comp">Vérifier</span>
-                    <span class="tag-comp">Implanter</span>
-                    <span class="tag-comp">Maintenir</span>
+                    <span class="tag-comp">Concevoir (AC31)</span>
+                    <span class="tag-comp">Vérifier (AC32)</span>
                 </div>
                 <div class="flex md:justify-end gap-2 border-t border-gray-200 pt-6 text-[10px] font-bold uppercase tracking-widest text-gray-400">
-                    Cliquez pour la démo vidéo →
+                    Cliquez pour voir les AC validés →
                 </div>
             </div>
         </article>
@@ -208,10 +207,17 @@
             </div>
             
             <div class="grid md:grid-cols-3 gap-16">
-                <div class="md:col-span-1">
-                    <h3 class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-6 border-b border-white/10 pb-4">Stack Technique</h3>
-                    <p id="modal-tech" class="text-sm font-light leading-relaxed text-gray-300">...</p>
+                <div class="md:col-span-1 space-y-10">
+                    <div>
+                        <h3 class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-6 border-b border-white/10 pb-4">Stack Technique</h3>
+                        <p id="modal-tech" class="text-sm font-light leading-relaxed text-gray-300">...</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-6 border-b border-white/10 pb-4">Apprentissages Critiques (B.U.T.)</h3>
+                        <ul id="modal-acs" class="text-sm font-light leading-relaxed text-gray-300 space-y-4"></ul>
+                    </div>
                 </div>
+                
                 <div class="md:col-span-2 space-y-10">
                     <div>
                         <h3 class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-6 border-b border-white/10 pb-4">Aperçu du projet</h3>
@@ -256,7 +262,7 @@
             });
         });
 
-        // 2. Logique de la Modale et bascule Image / iPhone
+        // 2. Logique de la Modale et intégration des AC
         const modal = document.getElementById('project-modal');
         const closeModalBtn = document.getElementById('close-modal');
         const body = document.body;
@@ -266,6 +272,7 @@
         const mTech = document.getElementById('modal-tech');
         const mDesc = document.getElementById('modal-desc');
         const mDetails = document.getElementById('modal-details');
+        const mACs = document.getElementById('modal-acs');
         
         const mImgView = document.getElementById('modal-img-view');
         const mIphoneView = document.getElementById('modal-iphone-view');
@@ -279,6 +286,19 @@
                 mTech.textContent = card.getAttribute('data-tech');
                 mDesc.textContent = card.getAttribute('data-desc');
                 mDetails.textContent = card.getAttribute('data-details');
+
+                // Remplissage des Apprentissages Critiques (AC)
+                const acString = card.getAttribute('data-acs');
+                mACs.innerHTML = ''; // On vide l'ancienne liste
+                if(acString) {
+                    const acList = acString.split('||');
+                    acList.forEach(ac => {
+                        const li = document.createElement('li');
+                        li.className = "flex items-start gap-3";
+                        li.innerHTML = `<span class="text-white/50 mt-1">→</span> <span>${ac}</span>`;
+                        mACs.appendChild(li);
+                    });
+                }
 
                 // Gestion de l'affichage Image OU Vidéo iPhone
                 const type = card.getAttribute('data-type');
